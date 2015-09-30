@@ -13,7 +13,7 @@ let {
 export default (FileDirective) => {
     
     
-    class FileDrop extends FileDirective {
+    class FileDropCurtain extends FileDirective {
         /**
          * Creates instance of {FileDropCurtain} object
          * @param {Object} options
