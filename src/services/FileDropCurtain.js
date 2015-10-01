@@ -31,7 +31,9 @@ export default (FileDirective) => {
                 // Name of property inside uploader._directive object
                 prop: 'curtain'
             });
-            
+
+            this.overClass = 'nv-file-over-curtain';
+
             super(extendedOptions);
         }
         /**
@@ -74,7 +76,7 @@ export default (FileDirective) => {
          * Event handler
          */
         onDragLeave(event) {
-            if(event.currentTarget === this.element[0]) return;
+            if(event.currentTarget !== this.element[0]) return;
             this._preventAndStop(event);
             forEach(this.uploader._directives.over, this._removeOverClass, this);
             forEach(this.uploader._directives.curtain, this._removeOverClass, this);
@@ -117,6 +119,13 @@ export default (FileDirective) => {
          */
         _removeOverClass(item) {
             item.removeOverClass();
+        }
+
+        addOverClass() {
+            this.element.addClass(this.getOverClass());
+        }
+        removeOverClass() {
+            this.element.removeClass(this.getOverClass());
         }
     }
     
